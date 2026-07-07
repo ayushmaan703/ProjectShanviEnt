@@ -1,4 +1,4 @@
-import asyncHandler  from "../utils/asyncHandler.js";
+import asyncHandler from "../utils/asyncHandler.js";
 import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import { User } from "../models/user.model.js";
@@ -63,8 +63,6 @@ const userLogin = asyncHandler(async (req, res) => {
   const getUser = await User.findOne({
     $or: [{ mobileNo }],
   });
-  console.log(getUser);
-  
   if (!getUser) {
     throw new ApiError(404, "User not found");
   }
@@ -164,7 +162,7 @@ const getCurrUserInfo = asyncHandler(async (req, res) => {
 });
 
 const getUserDetails = asyncHandler(async (req, res) => {
-  const { id } = req?.body?.params;
+  const { id } = req?.body;
   if (!id) {
     throw new ApiError(400, "User ID is required");
   }
@@ -235,6 +233,7 @@ const createCustomer = asyncHandler(async (req, res) => {
   if (!imageLocalPath) {
     throw new ApiError(400, "Image not found ");
   }
+
   const image = await uploadToCloudinary(imageLocalPath);
   if (!image) {
     throw new ApiError(400, "Image is required");
@@ -246,7 +245,7 @@ const createCustomer = asyncHandler(async (req, res) => {
     contactNo,
     connectionDetails,
     image: image.url,
-    createdBy: req.user._conditions._id,
+    createdBy: req.user._id,
     verified: false,
   });
   if (!customer) {
@@ -256,7 +255,6 @@ const createCustomer = asyncHandler(async (req, res) => {
     .status(201)
     .json(new ApiResponse(201, customer, "Customer created successfully"));
 });
-
 
 // const changeCoverImage = asyncHandler(async (req, res) => {
 //     const CoverImageLocalPath = req.file?.path
