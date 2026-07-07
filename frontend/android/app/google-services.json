@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "237582069735",
+    "project_id": "se-workflow-notificationnew",
+    "storage_bucket": "se-workflow-notificationnew.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237582069735:android:92ad224c2eb42f18c39742",
+        "android_client_info": {
+          "package_name": "com.frontendsewf"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNZ9kvTs8WvKrQfcTAerhvklqvgFAIAeI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

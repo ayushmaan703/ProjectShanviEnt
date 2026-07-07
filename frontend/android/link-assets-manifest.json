@@ -1,0 +1,117 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Merriweather_24pt-Black.ttf",
+      "sha1": "9194f8646b1f2ea1b7176e6d9427363a190eb073"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt-BlackItalic.ttf",
+      "sha1": "9fa5a7df3d6c59856fa3f6c5fb654131a8529786"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt-Bold.ttf",
+      "sha1": "9337465532304c6ae9cfe306b7e84515e065a553"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt-BoldItalic.ttf",
+      "sha1": "f1a8bcf91ed0922b4a9d7f113066fd7f7aefb41c"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt-ExtraBold.ttf",
+      "sha1": "ae7f20067bbd82ca588281154449e4d869dc324c"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt-ExtraBoldItalic.ttf",
+      "sha1": "8aa6437135904976d3191aa812dcde95971868ed"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt-Italic.ttf",
+      "sha1": "ad3accb77f6ee31b734a0f783be99cf9da2a7d41"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt-Light.ttf",
+      "sha1": "d2957d495a98cdd4ca83a89062d6abd5a26499c4"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt-LightItalic.ttf",
+      "sha1": "5a203f7217ca7469432a7a9be6927927cb8b5c33"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt-Medium.ttf",
+      "sha1": "72b23790aedf0144f0f9d07077294b9cc1e5283d"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt-MediumItalic.ttf",
+      "sha1": "d85c5ee2cb9dcaf79864d09cc3917418cbd8c65a"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt-Regular.ttf",
+      "sha1": "bf069ec33878b2568dd68ad66b70435ad35481d4"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt-SemiBold.ttf",
+      "sha1": "723ddab74f90142c829a3fcab04a581fbf15bdaa"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt-SemiBoldItalic.ttf",
+      "sha1": "6b6f4cc8718b69a2048001f094f49d07a625fa2d"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt_SemiCondensed-Black.ttf",
+      "sha1": "a7396c673b235297c5ac50635c3b6bde16be12e3"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt_SemiCondensed-BlackItalic.ttf",
+      "sha1": "b7a27be63e38f5ea9040ae575503956879f15b2e"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt_SemiCondensed-Bold.ttf",
+      "sha1": "d995a0420076cd2407af405a2e5da4be76ecd5a5"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt_SemiCondensed-BoldItalic.ttf",
+      "sha1": "4424b7d721239170f100e937845f41d2703382e7"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt_SemiCondensed-ExtraBold.ttf",
+      "sha1": "af543e47807c6ba1beb51eead0818907f16b714d"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt_SemiCondensed-ExtraBoldItalic.ttf",
+      "sha1": "afa99966312cd816969c8b143cf3ce677cd40a89"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt_SemiCondensed-Italic.ttf",
+      "sha1": "143b1268327392e5e96d07b5f9d9c694d620924f"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt_SemiCondensed-Light.ttf",
+      "sha1": "456ed6e0f4d4adf5fc969141f39cbc9227030bb8"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt_SemiCondensed-LightItalic.ttf",
+      "sha1": "f1c0930ef8fac157c46c110d9b7d741755152c32"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt_SemiCondensed-Medium.ttf",
+      "sha1": "dc182df9a2aa580c8bb7e5f277d8a5d4d329423f"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt_SemiCondensed-MediumItalic.ttf",
+      "sha1": "87e284d608820b2756e40a112a6895cf3f08df42"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt_SemiCondensed-Regular.ttf",
+      "sha1": "8cfe2e5a31234d25e83a4d6253432aa016bf2dc3"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt_SemiCondensed-SemiBold.ttf",
+      "sha1": "71fe9e4db8dacb72a37fc046ce8292c75b16fc86"
+    },
+    {
+      "path": "assets/fonts/Merriweather_24pt_SemiCondensed-SemiBoldItalic.ttf",
+      "sha1": "b889fc64425d4221ca29e301219539112a25c7b8"
+    }
+  ]
+}

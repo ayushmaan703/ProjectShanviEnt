@@ -1,0 +1,626 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0C80B921A6F3F58F76C31292 /* libPods-frontendSEWF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-frontendSEWF.a */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		1CDBCA36ABC3428681E8F25F /* Merriweather_24pt-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC9A5E51B2949EF9479DB2E /* Merriweather_24pt-Black.ttf */; };
+		6DEA7E32F7E44D11A3C464D2 /* Merriweather_24pt-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37E51FFF5DD449359BB6CA9F /* Merriweather_24pt-BlackItalic.ttf */; };
+		ABDD1DC6CEF243AC944E15FE /* Merriweather_24pt-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D59BBD2A736441AA0F8E1B1 /* Merriweather_24pt-Bold.ttf */; };
+		D09CF201817244ED8E7AAEE0 /* Merriweather_24pt-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C577C88F594C6ABF76F7BD /* Merriweather_24pt-BoldItalic.ttf */; };
+		D0F7E6E5E46043FCA53485EE /* Merriweather_24pt-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BA1E27F8492435AA5CF7954 /* Merriweather_24pt-ExtraBold.ttf */; };
+		D052AE4A6A6A4DEDA424A765 /* Merriweather_24pt-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DBF48740AEA487DA9B84DBD /* Merriweather_24pt-ExtraBoldItalic.ttf */; };
+		7E690B5D16A64D858818EA3A /* Merriweather_24pt-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 923A7E876E3B4B1FBC3F7BEA /* Merriweather_24pt-Italic.ttf */; };
+		F1AC49A3CC2D479B9A54AD15 /* Merriweather_24pt-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2C5236C26CD4462B1619239 /* Merriweather_24pt-Light.ttf */; };
+		B3ED0D63C307400FA200C2CC /* Merriweather_24pt-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86B8BA88F130488CB024ED7B /* Merriweather_24pt-LightItalic.ttf */; };
+		546B5B90B761454692A6D3E2 /* Merriweather_24pt-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD5E139961D1429C99E5A40B /* Merriweather_24pt-Medium.ttf */; };
+		DE4E438BFF8C48569213FDC5 /* Merriweather_24pt-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 835F09BD596C43D09CEC0158 /* Merriweather_24pt-MediumItalic.ttf */; };
+		8F174A7604C04D92896CE41D /* Merriweather_24pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7514D841C4964E0A912B60B9 /* Merriweather_24pt-Regular.ttf */; };
+		3179DF520811428F9A3B3807 /* Merriweather_24pt-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B39D2E7EEA164920BAB66E5C /* Merriweather_24pt-SemiBold.ttf */; };
+		3D5E2BE0010549E3B44BB3D9 /* Merriweather_24pt-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 706D835BF2F349698C78479E /* Merriweather_24pt-SemiBoldItalic.ttf */; };
+		6F2C245B4AEE47359EDC447E /* Merriweather_24pt_SemiCondensed-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AEF5E38E0D65446A9288EBE2 /* Merriweather_24pt_SemiCondensed-Black.ttf */; };
+		B5F12150051F4C30BB833A2F /* Merriweather_24pt_SemiCondensed-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA3B597982A74287A395F7EB /* Merriweather_24pt_SemiCondensed-BlackItalic.ttf */; };
+		8EB1DE93653F4589A4CF8DE0 /* Merriweather_24pt_SemiCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C2BC2C11747474982E0CC06 /* Merriweather_24pt_SemiCondensed-Bold.ttf */; };
+		19C3CB3034624B6CB4CFC514 /* Merriweather_24pt_SemiCondensed-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0D299C6BAF5478F846DAA8B /* Merriweather_24pt_SemiCondensed-BoldItalic.ttf */; };
+		37C3C57B0E344D588E3269A0 /* Merriweather_24pt_SemiCondensed-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BF015B880224D5994E86F94 /* Merriweather_24pt_SemiCondensed-ExtraBold.ttf */; };
+		1EC9E02462FD4C0097D783BD /* Merriweather_24pt_SemiCondensed-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7467513E9E8D40B1A3D4EC13 /* Merriweather_24pt_SemiCondensed-ExtraBoldItalic.ttf */; };
+		D725E4455EE5425FA9473A7A /* Merriweather_24pt_SemiCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87075EC6DB9847FC912D5DF0 /* Merriweather_24pt_SemiCondensed-Italic.ttf */; };
+		58CEA411C62E4E0CBD94D51F /* Merriweather_24pt_SemiCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA78E2B1AA804EC9A1EE1DBD /* Merriweather_24pt_SemiCondensed-Light.ttf */; };
+		3FE546C956384B7A8989EB5D /* Merriweather_24pt_SemiCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59DA81F279614B5C92B2367A /* Merriweather_24pt_SemiCondensed-LightItalic.ttf */; };
+		A133EB033073460AB7BD8983 /* Merriweather_24pt_SemiCondensed-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 373690E877BB495A818B270B /* Merriweather_24pt_SemiCondensed-Medium.ttf */; };
+		70F9287629C540E09938134F /* Merriweather_24pt_SemiCondensed-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 603D30FA544A4BE5B5E0229A /* Merriweather_24pt_SemiCondensed-MediumItalic.ttf */; };
+		BD5A78C90DA747A2A202C39C /* Merriweather_24pt_SemiCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1021393109C49DEA5E8985F /* Merriweather_24pt_SemiCondensed-Regular.ttf */; };
+		A197F579B61D4F6AAD2DE8DE /* Merriweather_24pt_SemiCondensed-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEF78FF77D8D4D02B19B1CE7 /* Merriweather_24pt_SemiCondensed-SemiBold.ttf */; };
+		1C857697F0BA40949C61D40D /* Merriweather_24pt_SemiCondensed-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 012D87A5A69C4052B50B2CA0 /* Merriweather_24pt_SemiCondensed-SemiBoldItalic.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = frontendSEWF;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* frontendSEWF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = frontendSEWF.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = frontendSEWF/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = frontendSEWF/Info.plist; sourceTree = "<group>"; };
+		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = frontendSEWF/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		3B4392A12AC88292D35C810B /* Pods-frontendSEWF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-frontendSEWF.debug.xcconfig"; path = "Target Support Files/Pods-frontendSEWF/Pods-frontendSEWF.debug.xcconfig"; sourceTree = "<group>"; };
+		5709B34CF0A7D63546082F79 /* Pods-frontendSEWF.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-frontendSEWF.release.xcconfig"; path = "Target Support Files/Pods-frontendSEWF/Pods-frontendSEWF.release.xcconfig"; sourceTree = "<group>"; };
+		5DCACB8F33CDC322A6C60F78 /* libPods-frontendSEWF.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-frontendSEWF.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = frontendSEWF/AppDelegate.swift; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = frontendSEWF/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		0EC9A5E51B2949EF9479DB2E /* Merriweather_24pt-Black.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt-Black.ttf"; path = "../assets/fonts/Merriweather_24pt-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		37E51FFF5DD449359BB6CA9F /* Merriweather_24pt-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt-BlackItalic.ttf"; path = "../assets/fonts/Merriweather_24pt-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6D59BBD2A736441AA0F8E1B1 /* Merriweather_24pt-Bold.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt-Bold.ttf"; path = "../assets/fonts/Merriweather_24pt-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		14C577C88F594C6ABF76F7BD /* Merriweather_24pt-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt-BoldItalic.ttf"; path = "../assets/fonts/Merriweather_24pt-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6BA1E27F8492435AA5CF7954 /* Merriweather_24pt-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt-ExtraBold.ttf"; path = "../assets/fonts/Merriweather_24pt-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3DBF48740AEA487DA9B84DBD /* Merriweather_24pt-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt-ExtraBoldItalic.ttf"; path = "../assets/fonts/Merriweather_24pt-ExtraBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		923A7E876E3B4B1FBC3F7BEA /* Merriweather_24pt-Italic.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt-Italic.ttf"; path = "../assets/fonts/Merriweather_24pt-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C2C5236C26CD4462B1619239 /* Merriweather_24pt-Light.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt-Light.ttf"; path = "../assets/fonts/Merriweather_24pt-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		86B8BA88F130488CB024ED7B /* Merriweather_24pt-LightItalic.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt-LightItalic.ttf"; path = "../assets/fonts/Merriweather_24pt-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BD5E139961D1429C99E5A40B /* Merriweather_24pt-Medium.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt-Medium.ttf"; path = "../assets/fonts/Merriweather_24pt-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		835F09BD596C43D09CEC0158 /* Merriweather_24pt-MediumItalic.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt-MediumItalic.ttf"; path = "../assets/fonts/Merriweather_24pt-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7514D841C4964E0A912B60B9 /* Merriweather_24pt-Regular.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt-Regular.ttf"; path = "../assets/fonts/Merriweather_24pt-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B39D2E7EEA164920BAB66E5C /* Merriweather_24pt-SemiBold.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt-SemiBold.ttf"; path = "../assets/fonts/Merriweather_24pt-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		706D835BF2F349698C78479E /* Merriweather_24pt-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt-SemiBoldItalic.ttf"; path = "../assets/fonts/Merriweather_24pt-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AEF5E38E0D65446A9288EBE2 /* Merriweather_24pt_SemiCondensed-Black.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt_SemiCondensed-Black.ttf"; path = "../assets/fonts/Merriweather_24pt_SemiCondensed-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		EA3B597982A74287A395F7EB /* Merriweather_24pt_SemiCondensed-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt_SemiCondensed-BlackItalic.ttf"; path = "../assets/fonts/Merriweather_24pt_SemiCondensed-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1C2BC2C11747474982E0CC06 /* Merriweather_24pt_SemiCondensed-Bold.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt_SemiCondensed-Bold.ttf"; path = "../assets/fonts/Merriweather_24pt_SemiCondensed-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A0D299C6BAF5478F846DAA8B /* Merriweather_24pt_SemiCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt_SemiCondensed-BoldItalic.ttf"; path = "../assets/fonts/Merriweather_24pt_SemiCondensed-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1BF015B880224D5994E86F94 /* Merriweather_24pt_SemiCondensed-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt_SemiCondensed-ExtraBold.ttf"; path = "../assets/fonts/Merriweather_24pt_SemiCondensed-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7467513E9E8D40B1A3D4EC13 /* Merriweather_24pt_SemiCondensed-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt_SemiCondensed-ExtraBoldItalic.ttf"; path = "../assets/fonts/Merriweather_24pt_SemiCondensed-ExtraBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		87075EC6DB9847FC912D5DF0 /* Merriweather_24pt_SemiCondensed-Italic.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt_SemiCondensed-Italic.ttf"; path = "../assets/fonts/Merriweather_24pt_SemiCondensed-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DA78E2B1AA804EC9A1EE1DBD /* Merriweather_24pt_SemiCondensed-Light.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt_SemiCondensed-Light.ttf"; path = "../assets/fonts/Merriweather_24pt_SemiCondensed-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		59DA81F279614B5C92B2367A /* Merriweather_24pt_SemiCondensed-LightItalic.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt_SemiCondensed-LightItalic.ttf"; path = "../assets/fonts/Merriweather_24pt_SemiCondensed-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		373690E877BB495A818B270B /* Merriweather_24pt_SemiCondensed-Medium.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt_SemiCondensed-Medium.ttf"; path = "../assets/fonts/Merriweather_24pt_SemiCondensed-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		603D30FA544A4BE5B5E0229A /* Merriweather_24pt_SemiCondensed-MediumItalic.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt_SemiCondensed-MediumItalic.ttf"; path = "../assets/fonts/Merriweather_24pt_SemiCondensed-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F1021393109C49DEA5E8985F /* Merriweather_24pt_SemiCondensed-Regular.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt_SemiCondensed-Regular.ttf"; path = "../assets/fonts/Merriweather_24pt_SemiCondensed-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FEF78FF77D8D4D02B19B1CE7 /* Merriweather_24pt_SemiCondensed-SemiBold.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt_SemiCondensed-SemiBold.ttf"; path = "../assets/fonts/Merriweather_24pt_SemiCondensed-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		012D87A5A69C4052B50B2CA0 /* Merriweather_24pt_SemiCondensed-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "Merriweather_24pt_SemiCondensed-SemiBoldItalic.ttf"; path = "../assets/fonts/Merriweather_24pt_SemiCondensed-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C80B921A6F3F58F76C31292 /* libPods-frontendSEWF.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* frontendSEWF */ = {
+			isa = PBXGroup;
+			children = (
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				761780EC2CA45674006654EE /* AppDelegate.swift */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+			);
+			name = frontendSEWF;
+			sourceTree = "<group>";
+		};
+		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				5DCACB8F33CDC322A6C60F78 /* libPods-frontendSEWF.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		83CBB9F61A601CBA00E9B192 = {
+			isa = PBXGroup;
+			children = (
+				13B07FAE1A68108700A75B9A /* frontendSEWF */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				83CBBA001A601CBA00E9B192 /* Products */,
+				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				6043C1DD7EE141618D9ADF0A /* Resources */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+		};
+		83CBBA001A601CBA00E9B192 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13B07F961A680F5B00A75B9A /* frontendSEWF.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B4392A12AC88292D35C810B /* Pods-frontendSEWF.debug.xcconfig */,
+				5709B34CF0A7D63546082F79 /* Pods-frontendSEWF.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6043C1DD7EE141618D9ADF0A /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				0EC9A5E51B2949EF9479DB2E /* Merriweather_24pt-Black.ttf */,
+				37E51FFF5DD449359BB6CA9F /* Merriweather_24pt-BlackItalic.ttf */,
+				6D59BBD2A736441AA0F8E1B1 /* Merriweather_24pt-Bold.ttf */,
+				14C577C88F594C6ABF76F7BD /* Merriweather_24pt-BoldItalic.ttf */,
+				6BA1E27F8492435AA5CF7954 /* Merriweather_24pt-ExtraBold.ttf */,
+				3DBF48740AEA487DA9B84DBD /* Merriweather_24pt-ExtraBoldItalic.ttf */,
+				923A7E876E3B4B1FBC3F7BEA /* Merriweather_24pt-Italic.ttf */,
+				C2C5236C26CD4462B1619239 /* Merriweather_24pt-Light.ttf */,
+				86B8BA88F130488CB024ED7B /* Merriweather_24pt-LightItalic.ttf */,
+				BD5E139961D1429C99E5A40B /* Merriweather_24pt-Medium.ttf */,
+				835F09BD596C43D09CEC0158 /* Merriweather_24pt-MediumItalic.ttf */,
+				7514D841C4964E0A912B60B9 /* Merriweather_24pt-Regular.ttf */,
+				B39D2E7EEA164920BAB66E5C /* Merriweather_24pt-SemiBold.ttf */,
+				706D835BF2F349698C78479E /* Merriweather_24pt-SemiBoldItalic.ttf */,
+				AEF5E38E0D65446A9288EBE2 /* Merriweather_24pt_SemiCondensed-Black.ttf */,
+				EA3B597982A74287A395F7EB /* Merriweather_24pt_SemiCondensed-BlackItalic.ttf */,
+				1C2BC2C11747474982E0CC06 /* Merriweather_24pt_SemiCondensed-Bold.ttf */,
+				A0D299C6BAF5478F846DAA8B /* Merriweather_24pt_SemiCondensed-BoldItalic.ttf */,
+				1BF015B880224D5994E86F94 /* Merriweather_24pt_SemiCondensed-ExtraBold.ttf */,
+				7467513E9E8D40B1A3D4EC13 /* Merriweather_24pt_SemiCondensed-ExtraBoldItalic.ttf */,
+				87075EC6DB9847FC912D5DF0 /* Merriweather_24pt_SemiCondensed-Italic.ttf */,
+				DA78E2B1AA804EC9A1EE1DBD /* Merriweather_24pt_SemiCondensed-Light.ttf */,
+				59DA81F279614B5C92B2367A /* Merriweather_24pt_SemiCondensed-LightItalic.ttf */,
+				373690E877BB495A818B270B /* Merriweather_24pt_SemiCondensed-Medium.ttf */,
+				603D30FA544A4BE5B5E0229A /* Merriweather_24pt_SemiCondensed-MediumItalic.ttf */,
+				F1021393109C49DEA5E8985F /* Merriweather_24pt_SemiCondensed-Regular.ttf */,
+				FEF78FF77D8D4D02B19B1CE7 /* Merriweather_24pt_SemiCondensed-SemiBold.ttf */,
+				012D87A5A69C4052B50B2CA0 /* Merriweather_24pt_SemiCondensed-SemiBoldItalic.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		13B07F861A680F5B00A75B9A /* frontendSEWF */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "frontendSEWF" */;
+			buildPhases = (
+				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
+				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = frontendSEWF;
+			productName = frontendSEWF;
+			productReference = 13B07F961A680F5B00A75B9A /* frontendSEWF.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1120;
+					};
+				};
+			};
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "frontendSEWF" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83CBB9F61A601CBA00E9B192;
+			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13B07F861A680F5B00A75B9A /* frontendSEWF */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00E356EC1AD99517003FC87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				1CDBCA36ABC3428681E8F25F /* Merriweather_24pt-Black.ttf in Resources */,
+				6DEA7E32F7E44D11A3C464D2 /* Merriweather_24pt-BlackItalic.ttf in Resources */,
+				ABDD1DC6CEF243AC944E15FE /* Merriweather_24pt-Bold.ttf in Resources */,
+				D09CF201817244ED8E7AAEE0 /* Merriweather_24pt-BoldItalic.ttf in Resources */,
+				D0F7E6E5E46043FCA53485EE /* Merriweather_24pt-ExtraBold.ttf in Resources */,
+				D052AE4A6A6A4DEDA424A765 /* Merriweather_24pt-ExtraBoldItalic.ttf in Resources */,
+				7E690B5D16A64D858818EA3A /* Merriweather_24pt-Italic.ttf in Resources */,
+				F1AC49A3CC2D479B9A54AD15 /* Merriweather_24pt-Light.ttf in Resources */,
+				B3ED0D63C307400FA200C2CC /* Merriweather_24pt-LightItalic.ttf in Resources */,
+				546B5B90B761454692A6D3E2 /* Merriweather_24pt-Medium.ttf in Resources */,
+				DE4E438BFF8C48569213FDC5 /* Merriweather_24pt-MediumItalic.ttf in Resources */,
+				8F174A7604C04D92896CE41D /* Merriweather_24pt-Regular.ttf in Resources */,
+				3179DF520811428F9A3B3807 /* Merriweather_24pt-SemiBold.ttf in Resources */,
+				3D5E2BE0010549E3B44BB3D9 /* Merriweather_24pt-SemiBoldItalic.ttf in Resources */,
+				6F2C245B4AEE47359EDC447E /* Merriweather_24pt_SemiCondensed-Black.ttf in Resources */,
+				B5F12150051F4C30BB833A2F /* Merriweather_24pt_SemiCondensed-BlackItalic.ttf in Resources */,
+				8EB1DE93653F4589A4CF8DE0 /* Merriweather_24pt_SemiCondensed-Bold.ttf in Resources */,
+				19C3CB3034624B6CB4CFC514 /* Merriweather_24pt_SemiCondensed-BoldItalic.ttf in Resources */,
+				37C3C57B0E344D588E3269A0 /* Merriweather_24pt_SemiCondensed-ExtraBold.ttf in Resources */,
+				1EC9E02462FD4C0097D783BD /* Merriweather_24pt_SemiCondensed-ExtraBoldItalic.ttf in Resources */,
+				D725E4455EE5425FA9473A7A /* Merriweather_24pt_SemiCondensed-Italic.ttf in Resources */,
+				58CEA411C62E4E0CBD94D51F /* Merriweather_24pt_SemiCondensed-Light.ttf in Resources */,
+				3FE546C956384B7A8989EB5D /* Merriweather_24pt_SemiCondensed-LightItalic.ttf in Resources */,
+				A133EB033073460AB7BD8983 /* Merriweather_24pt_SemiCondensed-Medium.ttf in Resources */,
+				70F9287629C540E09938134F /* Merriweather_24pt_SemiCondensed-MediumItalic.ttf in Resources */,
+				BD5A78C90DA747A2A202C39C /* Merriweather_24pt_SemiCondensed-Regular.ttf in Resources */,
+				A197F579B61D4F6AAD2DE8DE /* Merriweather_24pt_SemiCondensed-SemiBold.ttf in Resources */,
+				1C857697F0BA40949C61D40D /* Merriweather_24pt_SemiCondensed-SemiBoldItalic.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-frontendSEWF/Pods-frontendSEWF-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-frontendSEWF/Pods-frontendSEWF-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-frontendSEWF/Pods-frontendSEWF-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-frontendSEWF-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-frontendSEWF/Pods-frontendSEWF-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-frontendSEWF/Pods-frontendSEWF-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-frontendSEWF/Pods-frontendSEWF-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		13B07F871A680F5B00A75B9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* frontendSEWF */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		13B07F941A680F5B00A75B9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-frontendSEWF.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = frontendSEWF/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = frontendSEWF;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-frontendSEWF.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = frontendSEWF/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = frontendSEWF;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+					"-DFOLLY_CFG_NO_COROUTINES=1",
+					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
+				);
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		83CBBA211A601CBA00E9B192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+					"-DFOLLY_CFG_NO_COROUTINES=1",
+					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
+				);
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "frontendSEWF" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13B07F941A680F5B00A75B9A /* Debug */,
+				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "frontendSEWF" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CBBA201A601CBA00E9B192 /* Debug */,
+				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+}
