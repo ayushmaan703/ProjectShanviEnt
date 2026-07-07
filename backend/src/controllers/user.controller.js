@@ -12,7 +12,6 @@ const generateRefreshAndAccessTokens = async (userId) => {
     const user = await User.findById(userId);
     const accessToken = user.generateAccessTokens();
     const refreshToken = user.generateRefreshTokens();
-    user.refreshToken = refreshToken;
     await user.save({ validateBeforeSave: false });
     return { refreshToken, accessToken };
   } catch (error) {
@@ -64,6 +63,8 @@ const userLogin = asyncHandler(async (req, res) => {
   const getUser = await User.findOne({
     $or: [{ mobileNo }],
   });
+  console.log(getUser);
+  
   if (!getUser) {
     throw new ApiError(404, "User not found");
   }
