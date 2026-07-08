@@ -10,7 +10,7 @@ import { DrawerContentScrollView } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/FontAwesome6';
 import { useDispatch, useSelector } from 'react-redux';
 import Toast from 'react-native-toast-message';
-import { userLogout } from '../store/slice/Auth.slice';
+import { logoutUser } from '../store/slice/Auth.slice';
 import { CommonActions } from '@react-navigation/native';
 import CustomBtn from '../helper/CustomBtn';
 import { useState } from 'react';
@@ -20,16 +20,15 @@ const logout = <Icon name="right-from-bracket" size={20} color="#fff" />;
 const CustomDrawer = (props) => {
 
     const [activeButton, setActiveButton] = useState("Home");
-    const empName = useSelector((state) => state.auth.userData?.Emp);
+    const empName = useSelector((state) => state.auth.userData?.fullName);
     const { navigation } = props;
     const dispatch = useDispatch();
-    const EmpId = useSelector((state) => state.auth.userData?.EmpId)
     const isLoading = useSelector(state => state.auth.loading);
-
+    const currUser = useSelector((state) => state.auth.userData);
 
     const handleLogout = async () => {
-        const res = await dispatch(userLogout({ EmpId }))
-        if (res.type === "logout/fulfilled") {
+        const res = await dispatch(logoutUser())
+        if (res.type === "logoutUser/fulfilled") {
             navigation.navigate('Home', { screen: 'Login' })
             navigation.dispatch(
                 CommonActions.reset(
@@ -83,14 +82,14 @@ const CustomDrawer = (props) => {
                     isActive={activeButton === "Home"}
                     setActive={setActiveButton}
                 />
-                <CustomBtn
-                    title="Expenses"
-                    icon="indian-rupee-sign"
-                    onPress={() => navigation.navigate("expenses")}
-                    isActive={activeButton === "Expenses"}
+                {currUser?.role === "admin" && <CustomBtn
+                    title="Register App Users"
+                    icon="user-plus"
+                    onPress={() => navigation.navigate("RegisterAppUsers")}
+                    isActive={activeButton === "Register App Users"}
                     setActive={setActiveButton}
-                />
-                <CustomBtn
+                />}
+                {/*<CustomBtn
                     title="Expenses History"
                     icon="clock"
                     onPress={() => navigation.navigate("Home", { screen: "ExpenceHistoryForEmp" })}
@@ -117,7 +116,7 @@ const CustomDrawer = (props) => {
                     onPress={() => navigation.navigate("Home", { screen: "dailyReport" })}
                     isActive={activeButton === "New Task"}
                     setActive={setActiveButton}
-                />
+                /> */}
             </DrawerContentScrollView>
 
             {/* footer logout  */}

@@ -11,6 +11,8 @@
 
 import axios from 'axios';
 import baseUrl from '../../Cosntants.js';
+import * as Keychain from 'react-native-keychain';
+
 const axiosInstance = axios.create({
   baseURL: baseUrl,
   timeout: 60000,
@@ -20,6 +22,20 @@ const axiosInstance = axios.create({
   },
   withCredentials: true,
 });
+
+axiosInstance.interceptors.request.use(async config => {
+
+  const credentials = await Keychain.getGenericPassword();
+
+  if (credentials) {
+    const {accessToken} = JSON.parse(credentials.password);
+
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
+
+  return config;
+});
+
 axiosInstance.interceptors.request.use(
   config => {
     console.log('Making request to:', config.baseURL + config.url);

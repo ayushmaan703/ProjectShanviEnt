@@ -2,114 +2,28 @@ import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import axiosInstance from '../../helper/AxiosInstance.js';
 
 const initialState = {
-  suceess: false,
-  list: [],
-  cashBankList: [],
+  loading: false,
+  customerList: null,
 };
 
-export const getAllEmployeeList = createAsyncThunk(
-  'getAllEmployeeList',
-  async () => {
+export const verifyCustomers = createAsyncThunk(
+  'verifyCustomers',
+  async data => {
     try {
-      const response = await axiosInstance.get(`GetEmployeeList`);
-      return response.data;
+      const response = await axiosInstance.post('/admin/verifyCustomer', data);
+      return response.data.data;
     } catch (error) {
       throw error;
     }
   },
 );
 
-export const assignTask = createAsyncThunk(
-  'assignTask',
-  async ({ExpDate, task, TaskDescp, EmpId, AdminId }) => {
-    try {
-      const response = await axiosInstance.get(
-        `/AddTask?ExpDate=${ExpDate}&task=${task}&TaskDescp=${TaskDescp}&EmpId=${EmpId}&AdminId=${AdminId}`,
-      );
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
-);
-
-export const seeEmployeeExpences = createAsyncThunk(
-  'seeEmployeeExpences',
-  async ({ToDate, EmpId, FromDate, Paytype = 3}) => {
-    try {
-      const response = await axiosInstance.get(
-        `/GetExpenceList?EmpId=${EmpId}&FromDate=${FromDate}&ToDate=${ToDate}&Paytype=${Paytype}`,
-      );
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
-);
-
-export const seeEmpCompletedTask = createAsyncThunk(
-  'seeEmpCompletedTask',
-  async ({EmpId, FromDate, ToDate, TaskType = 2}) => {
-    try {
-      const response = await axiosInstance.get(
-        `GetEmpTaskDetail?EmpId=${EmpId}&FromDate=${FromDate}&ToDate=${ToDate}&TaskType=${TaskType}`,
-      );
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
-);
-
-export const EmpWiseLedger = createAsyncThunk(
-  'EmpWiseLedger',
-  async ({EmpId, FromDate, ToDate}) => {
-    try {
-      const response = await axiosInstance.get(
-        `EmpwiseLedger?EmpId=${EmpId}&FromDate=${FromDate}&ToDate=${ToDate}`,
-      );
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
-);
-
-export const EmpWiseLedgerSummary = createAsyncThunk(
-  'EmpWiseLedgerSummary',
-  async ({EmpId, FromDate, ToDate}) => {
-    try {
-      const response = await axiosInstance.get(
-        `EmpwiseLedger_Summary?EmpId=${EmpId}&FromDate=${FromDate}&ToDate=${ToDate}`,
-      );
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
-);
-
-export const approveExpense = createAsyncThunk(
-  'approveExpense',
-  async ({EmpId, CashBankId}) => {
-    try {
-      console.log({EmpId, CashBankId});
-
-      const response = await axiosInstance.get(
-        `ExpenceApprove?id=${EmpId}&CashBankId=${CashBankId}`,
-      );
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
-);
-
-export const CashBankList = createAsyncThunk('CashBankList', async () => {
+export const registerAdmin = createAsyncThunk('registerAdmin', async data => {
   try {
-    const response = await axiosInstance.get('GetCashBankList');
-    return response.data;
+    const response = await axiosInstance.post('/admin/registerAdmin', data);
+    return response.data.data;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 });
@@ -119,20 +33,27 @@ const adminSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(getAllEmployeeList.pending, state => {
-      state.suceess = false;
-    });
-    builder.addCase(getAllEmployeeList.fulfilled, (state, action) => {
-      state.suceess = true;
-      state.list = action.payload;
-    });
-    builder.addCase(CashBankList.pending, state => {
-      state.suceess = false;
-    });
-    builder.addCase(CashBankList.fulfilled, (state, action) => {
-      state.suceess = true;
-      state.cashBankList = action.payload;
-    });
+    builder
+      .addCase(verifyCustomers.pending, state => {
+        state.loading = true;
+      })
+      .addCase(verifyCustomers.fulfilled, (state, action) => {
+        state.loading = false;
+        state.customerList = action.payload;
+      })
+      .addCase(verifyCustomers.rejected, (state, action) => {
+        state.loading = false;
+        state.customerList = null;
+      })
+      .addCase(registerAdmin.pending, state => {
+        state.loading = true;
+      })
+      .addCase(registerAdmin.fulfilled, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(registerAdmin.rejected, (state, action) => {
+        state.loading = false;
+      });
   },
 });
 export default adminSlice.reducer;

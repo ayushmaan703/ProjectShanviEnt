@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { Formik } from 'formik'
 import Toast from 'react-native-toast-message'
 import UserHomeDashboard from './UserHomeDashboard'
-import AdminHome from '../admin screens/AdminHome'
+// import AdminHome from '../admin screens/AdminHome'
 
 const HomeScreen = () => {
     const dispatch = useDispatch()
@@ -62,8 +62,9 @@ const HomeScreen = () => {
 
     return (
         <>
-            {empDetails.UserType === "User" ? < UserHomeDashboard /> : <AdminHome />}
-            <View>
+            {/* {empDetails.UserType === "User" ? < UserHomeDashboard /> : <AdminHome />} */}
+            < UserHomeDashboard />
+            {/* <View>
                 <Modal
                     animationType="slide"
                     transparent={true}
@@ -117,11 +118,7 @@ const HomeScreen = () => {
                                                 handleSubmit()
                                                 setPasswordModalVisible(false)
                                             }} />
-                                            {/* <Button
-                                title="Cancel"
-                                color="red"
-                                onPress={() => setPasswordModalVisible(false)}
-                            /> */}
+                                           
                                         </View>
                                     </View>
                                 )}
@@ -129,7 +126,7 @@ const HomeScreen = () => {
                         </View>
                     </View>
                 </Modal>
-            </View>
+            </View> */}
         </>
 
     )

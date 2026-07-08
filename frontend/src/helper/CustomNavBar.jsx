@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         position: "relative",
+        marginTop: 20,
     },
     navbar: {
         width: "96%",

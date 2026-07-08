@@ -66,32 +66,26 @@ const LoginScreen = () => {
     const dispatch = useDispatch();
 
     const handleLogin = async (values, { resetForm }) => {
-        const { Mobileno, pwd } = values;
-        try {
-            const result = await dispatch(userLogin({ Mobileno, pwd }));
-            if (result.payload.Status === "Invalid User") {
-                Toast.show({
-                    type: 'customNotificationError',
-                    text1: "Invalid User",
-                    visibilityTime: 1000
-                });
-            }
-            resetForm();
-        } catch (error) {
+        const { mobileNo, password } = values;
+
+        const result = await dispatch(userLogin({ mobileNo, password }));
+        if (result.type === "userLogin/fulfilled") {
             Toast.show({
-                type: 'customNotificationError',
-                text1: "Error Occurred",
+                type: 'customNotificationSuccess',
+                text1: "Login Successful",
                 visibilityTime: 1000
             });
+            resetForm();
         }
+
     };
 
     const loginSchema = Yup.object().shape({
-        Mobileno: Yup.string()
+        mobileNo: Yup.string()
             .min(10, "Quiet Small for A Mobile Number")
             .matches(/^\d+$/, "Invalid Mobile Number")
             .required('Mobile Number is required'),
-        pwd: Yup.string().required('Password is required'),
+        password: Yup.string().required('Password is required'),
     });
 
     return (
@@ -114,7 +108,7 @@ const LoginScreen = () => {
                     <Text style={styles.subtitle}>Login to continue</Text>
 
                     <Formik
-                        initialValues={{ Mobileno: '', pwd: '' }}
+                        initialValues={{ mobileNo: '', password: '' }}
                         validationSchema={loginSchema}
                         onSubmit={handleLogin}
                     >
@@ -125,12 +119,12 @@ const LoginScreen = () => {
                                     placeholderTextColor="#666"
                                     style={styles.input}
                                     keyboardType="numeric"
-                                    onChangeText={handleChange('Mobileno')}
-                                    onBlur={handleBlur('Mobileno')}
-                                    value={values.Mobileno}
+                                    onChangeText={handleChange('mobileNo')}
+                                    onBlur={handleBlur('mobileNo')}
+                                    value={values.mobileNo}
                                 />
-                                {touched.Mobileno && errors.Mobileno && (
-                                    <Text style={styles.error}>{errors.Mobileno}</Text>
+                                {touched.mobileNo && errors.mobileNo && (
+                                    <Text style={styles.error}>{errors.mobileNo}</Text>
                                 )}
 
                                 <TextInput
@@ -138,12 +132,12 @@ const LoginScreen = () => {
                                     placeholderTextColor="#666"
                                     style={styles.input}
                                     secureTextEntry
-                                    onChangeText={handleChange('pwd')}
-                                    onBlur={handleBlur('pwd')}
-                                    value={values.pwd}
+                                    onChangeText={handleChange('password')}
+                                    onBlur={handleBlur('password')}
+                                    value={values.password}
                                 />
-                                {touched.pwd && errors.pwd && (
-                                    <Text style={styles.error}>{errors.pwd}</Text>
+                                {touched.password && errors.password && (
+                                    <Text style={styles.error}>{errors.password}</Text>
                                 )}
 
                                 {/* Social Login Buttons */}
