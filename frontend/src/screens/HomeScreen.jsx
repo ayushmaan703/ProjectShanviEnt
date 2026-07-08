@@ -12,53 +12,53 @@ const HomeScreen = () => {
     const dispatch = useDispatch()
     const [passwordModalVisible, setPasswordModalVisible] = useState(false)
     const empDetails = useSelector((state) => state.auth.userData)
-    const id = empDetails.EmpId
+    // const id = empDetails.EmpId
 
-    const passwordUpdateSchema = Yup.object().shape({
-        newPassword: Yup.string()
-            .min(6, 'Password must be at least 6 characters long'),
-        // .matches(/[0-9]/, 'Password must contain at least one number')
-        // .matches(/[!@#$%^&*(),.?":{}|<>]/, 'Password must contain at least one special character')
-        // .required('Password is required'),
-        confirmNewPassword: Yup.string()
-            .min(6, 'Password must be at least 6 characters long')
-        // .matches(/[0-9]/, 'Password must contain at least one number')
-        // .matches(/[!@#$%^&*(),.?":{}|<>]/, 'Password must contain at least one special character')
-        // .required('Password is required')
-    });
+    // const passwordUpdateSchema = Yup.object().shape({
+    //     newPassword: Yup.string()
+    //         .min(6, 'Password must be at least 6 characters long'),
+    //     // .matches(/[0-9]/, 'Password must contain at least one number')
+    //     // .matches(/[!@#$%^&*(),.?":{}|<>]/, 'Password must contain at least one special character')
+    //     // .required('Password is required'),
+    //     confirmNewPassword: Yup.string()
+    //         .min(6, 'Password must be at least 6 characters long')
+    //     // .matches(/[0-9]/, 'Password must contain at least one number')
+    //     // .matches(/[!@#$%^&*(),.?":{}|<>]/, 'Password must contain at least one special character')
+    //     // .required('Password is required')
+    // });
 
-    const handleChangePassword = async (values) => {
-        if (values.newPassword != values.confirmNewPassword) {
-            Toast.show({
-                type: 'customNotificationError',
-                text1: "Both passwords must be same",
-                visibilityTime: 1000
-            });
-        } else {
-            try {
-                const data = await dispatch(changePassword({ id, newPwd: values.newPassword }))
-                if (data.payload.Status === "Sucess") {
-                    Toast.show({
-                        type: 'customNotificationSuccess',
-                        text1: "Password Changed SucessFully",
-                        visibilityTime: 1000
-                    });
-                }
-            } catch (error) {
-                Toast.show({
-                    type: 'customNotificationError',
-                    text1: "error updating password",
-                    visibilityTime: 1000
-                });
-            }
-        }
-    }
+    // const handleChangePassword = async (values) => {
+    //     if (values.newPassword != values.confirmNewPassword) {
+    //         Toast.show({
+    //             type: 'customNotificationError',
+    //             text1: "Both passwords must be same",
+    //             visibilityTime: 1000
+    //         });
+    //     } else {
+    //         try {
+    //             const data = await dispatch(changePassword({ id, newPwd: values.newPassword }))
+    //             if (data.payload.Status === "Sucess") {
+    //                 Toast.show({
+    //                     type: 'customNotificationSuccess',
+    //                     text1: "Password Changed SucessFully",
+    //                     visibilityTime: 1000
+    //                 });
+    //             }
+    //         } catch (error) {
+    //             Toast.show({
+    //                 type: 'customNotificationError',
+    //                 text1: "error updating password",
+    //                 visibilityTime: 1000
+    //             });
+    //         }
+    //     }
+    // }
 
-    useEffect(() => {
-        if (empDetails.flag == 0) {
-            setPasswordModalVisible(true);
-        }
-    }, [empDetails.flag]);
+    // useEffect(() => {
+    //     if (empDetails.flag == 0) {
+    //         setPasswordModalVisible(true);
+    //     }
+    // }, [empDetails.flag]);
 
     return (
         <>

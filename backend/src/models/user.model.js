@@ -44,6 +44,7 @@ userSchema.methods.generateAccessTokens = function () {
       _id: this._id,
       mobileNo: this.mobileNo,
       fullName: this.fullName,
+      role: this.role,
     },
     process.env.ACCESS_TOKEN_SECRET,
     {

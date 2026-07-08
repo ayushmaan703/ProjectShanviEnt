@@ -114,27 +114,54 @@ const logoutUser = asyncHandler(async (req, res) => {
 });
 
 const refreshToken = asyncHandler(async (req, res) => {
-  const refreshToken = req.cookies.refreshToken;
-  if (!refreshToken) return res.sendStatus(500);
+  const { refreshToken } = req.body;
+
+  if (!refreshToken) {
+    return res.status(401).json({
+      success: false,
+      message: "Refresh token missing",
+    });
+  }
 
   jwt.verify(
     refreshToken,
     process.env.REFRESH_TOKEN_SECRET,
-    async (err, user) => {
-      if (err) return res.sendStatus(500);
-      const getUser = await User.findById(user._id);
+    async (err, decoded) => {
+      if (err) {
+        return res.status(401).json({
+          success: false,
+          message: "Invalid refresh token",
+        });
+      }
+
+      const user = await User.findById(decoded._id);
+
+      if (!user) {
+        return res.status(404).json({
+          success: false,
+          message: "User not found",
+        });
+      }
+
       const accessToken = jwt.sign(
         {
-          _id: getUser._id,
-          userId: getUser.userId,
-          role: getUser.role,
+          _id: user._id,
+          mobileNo: user.mobileNo,
+          fullName: user.fullName,
+          role: user.role,
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
           expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
         },
       );
-      res.json({ accessToken });
+
+      return res.status(200).json({
+        success: true,
+        data: {
+          accessToken,
+        },
+      });
     },
   );
 });
@@ -154,7 +181,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
 });
 
 const getCurrUserInfo = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._conditions._id).select(
+  const user = await User.findById(req.user._id).select(
     "-password -refreshToken",
   );
   return res

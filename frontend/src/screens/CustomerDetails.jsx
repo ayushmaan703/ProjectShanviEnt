@@ -66,7 +66,7 @@ const CustomerDetails = ({ route }) => {
     }
     const handledeleteCustomer = async () => {
         const res = await dispatch(deleteCustomer({ customerId: customer?._id }));
-        console.log(res);
+
         if (res.type === "deleteCustomer/fulfilled") {
             Toast.show({
                 type: "customNotificationSuccess",

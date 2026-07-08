@@ -3,7 +3,7 @@ import axiosInstance from '../../helper/AxiosInstance.js';
 
 const initialState = {
   loading: false,
-  status: false,
+  status: 'loading',
   userData: null,
   requestedUserData: null,
 };
@@ -52,7 +52,7 @@ export const getUInfo = createAsyncThunk('getUInfo', async data => {
 
 export const getCurrUInfo = createAsyncThunk('getCurrUInfo', async () => {
   try {
-    const response = await axiosInstance.post('/user/getCurrUInfo');
+    const response = await axiosInstance.get('/user/getCurrUInfo');
     return response.data.data;
   } catch (error) {
     throw error;
@@ -62,6 +62,7 @@ export const getCurrUInfo = createAsyncThunk('getCurrUInfo', async () => {
 export const logoutUser = createAsyncThunk('logoutUser', async () => {
   try {
     const response = await axiosInstance.post('/user/logout');
+    await Keychain.resetGenericPassword();
     return response.data.data;
   } catch (error) {
     throw error;
@@ -90,6 +91,37 @@ export const createCustomer = createAsyncThunk('createCustomer', async data => {
   }
 });
 
+export const initializeAuth = createAsyncThunk(
+  'initializeAuth',
+  async (_, {dispatch}) => {
+    const credentials = await Keychain.getGenericPassword();
+
+    if (!credentials) {
+      throw new Error('No Token');
+    }
+
+    const {refreshToken} = JSON.parse(credentials.password);
+
+    const response = await axiosInstance.post('/user/refreshToken', {
+      refreshToken,
+    });
+
+    const {accessToken} = response.data.data;
+
+    await Keychain.setGenericPassword(
+      'token',
+      JSON.stringify({
+        accessToken,
+        refreshToken,
+      }),
+    );
+
+    await dispatch(getCurrUInfo());
+
+    return true;
+  },
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -101,13 +133,22 @@ const authSlice = createSlice({
       })
       .addCase(userLogin.fulfilled, (state, action) => {
         state.loading = false;
-        state.status = true;
+        state.status = 'authenticated';
         state.userData = action.payload.user;
       })
       .addCase(userLogin.rejected, (state, action) => {
         state.loading = false;
-        state.status = false;
+        state.status = 'unauthenticated';
         state.userData = null;
+      })
+      .addCase(initializeAuth.pending, state => {
+        state.status = 'loading';
+      })
+      .addCase(initializeAuth.fulfilled, state => {
+        state.status = 'authenticated';
+      })
+      .addCase(initializeAuth.rejected, state => {
+        state.status = 'unauthenticated';
       })
       .addCase(registerUser.pending, state => {
         state.loading = true;
@@ -134,10 +175,12 @@ const authSlice = createSlice({
       })
       .addCase(getCurrUInfo.fulfilled, (state, action) => {
         state.loading = false;
+        state.status = 'authenticated';
         state.userData = action.payload;
       })
       .addCase(getCurrUInfo.rejected, (state, action) => {
         state.loading = false;
+        state.status = 'unauthenticated';
         state.userData = null;
       })
       .addCase(logoutUser.pending, state => {
@@ -145,12 +188,12 @@ const authSlice = createSlice({
       })
       .addCase(logoutUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.status = false;
+        state.status = 'unauthenticated';
         state.userData = null;
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.loading = false;
-        state.status = false;
+        state.status = 'unauthenticated';
         state.userData = null;
       })
       .addCase(forgetPass.pending, state => {

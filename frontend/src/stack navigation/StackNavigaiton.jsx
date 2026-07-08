@@ -8,6 +8,7 @@ import {
 import { useSelector } from 'react-redux';
 import CreateCustomer from '../screens/CreateCustomer.jsx';
 import CustomerDetails from '../screens/CustomerDetails.jsx';
+import SplashScreen from '../helper/SplashScreen.jsx';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ const StackNavigator = () => {
 
     // const [isSplashVisible, setIsSplashVisible] = useState(true);
     const auth = useSelector((state) => state.auth?.status)
+    
     // useEffect(() => {
     //     const timer = setTimeout(() => {
     //         setIsSplashVisible(false);
@@ -26,23 +28,40 @@ const StackNavigator = () => {
     // if (isSplashVisible) {
     //     return <SplashScreen />;
     // }
-
+    if (auth === "loading") {
+        return <SplashScreen />;
+    }
     return (
-        <Stack.Navigator
-            initialRouteName={auth ? 'Home' : 'Login'}
-            screenOptions={{
-                headerShown: false,
-                // headerStyle: { backgroundColor: '#6200ee' },
-                // headerTintColor: '#fff',
-                // headerTitleStyle: { fontWeight: 'bold' },
-            }}
-        >
-            {auth ?
-                <Stack.Screen name="Home" component={HomeScreen} /> :
-                <Stack.Screen name="Login" component={LoginScreen} />}
-            <Stack.Screen name="UserHomeDashboard" component={UserHomeDashboard} />
-            <Stack.Screen name="CreateCustomer" component={CreateCustomer} />
-            <Stack.Screen name="CustomerDetails" component={CustomerDetails} />
+        // <Stack.Navigator
+        //     initialRouteName={auth ? 'Home' : 'Login'}
+        //     screenOptions={{
+        //         headerShown: false,
+        //         // headerStyle: { backgroundColor: '#6200ee' },
+        //         // headerTintColor: '#fff',
+        //         // headerTitleStyle: { fontWeight: 'bold' },
+        //     }}
+        // >
+        //     {auth ?
+        //         <Stack.Screen name="Home" component={HomeScreen} /> :
+        //         <Stack.Screen name="Login" component={LoginScreen} />}
+        //     <Stack.Screen name="UserHomeDashboard" component={UserHomeDashboard} />
+        //     <Stack.Screen name="CreateCustomer" component={CreateCustomer} />
+        //     <Stack.Screen name="CustomerDetails" component={CustomerDetails} />
+        // </Stack.Navigator>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            {auth === "authenticated" ? (
+                <>
+                    <Stack.Screen name="Home" component={HomeScreen} />
+                    <Stack.Screen name="UserHomeDashboard" component={UserHomeDashboard} />
+                    <Stack.Screen name="CreateCustomer" component={CreateCustomer} />
+                    <Stack.Screen name="CustomerDetails" component={CustomerDetails} />
+                </>
+            ) : (
+                <Stack.Screen
+                    name="Login"
+                    component={LoginScreen}
+                />
+            )}
         </Stack.Navigator>
     );
 };

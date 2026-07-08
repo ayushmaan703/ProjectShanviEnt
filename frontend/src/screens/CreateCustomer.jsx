@@ -95,7 +95,7 @@ const CreateCustomer = () => {
             saveToPhotos: false,
         });
 
-        console.log(result);
+
 
         if (result.didCancel || !result.assets?.length) return;
 
@@ -195,7 +195,7 @@ const CreateCustomer = () => {
             name: form.image.fileName || `customer_${Date.now()}.jpg`,
         });
         const res = await dispatch(createCustomer(data));
-        console.log(res);
+
 
         if (res.type === "createCustomer/fulfilled") {
             Toast.show({
@@ -229,7 +229,7 @@ const CreateCustomer = () => {
 
             return granted === PermissionsAndroid.RESULTS.GRANTED;
         } catch (err) {
-            console.log(err);
+
             return false;
         }
     };

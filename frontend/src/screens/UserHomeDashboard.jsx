@@ -12,6 +12,7 @@ import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
 import { getAllCustomers } from "../store/slice/Customer.slice";
 import { useDispatch, useSelector } from "react-redux";
 import { RefreshControl } from "react-native-gesture-handler";
+import { getCurrUInfo } from "../store/slice/Auth.slice";
 
 const UserHomeDashboard = () => {
 
@@ -45,6 +46,7 @@ const UserHomeDashboard = () => {
 
   useEffect(() => {
     dispatch(getAllCustomers());
+    dispatch(getCurrUInfo());
   }, []);
 
   const renderCustomer = ({ item }) => (
@@ -78,6 +80,7 @@ const UserHomeDashboard = () => {
   const onRefresh = async () => {
     setRefreshing(true);
     dispatch(getAllCustomers());
+    dispatch(getCurrUInfo());
     setTimeout(() => {
       setRefreshing(false);
     }, 2000);

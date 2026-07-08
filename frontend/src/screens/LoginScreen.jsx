@@ -35,11 +35,11 @@ const LoginScreen = () => {
                     PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
                 );
                 if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                    console.log('Notification permission granted');
+                    // console.log('Notification permission granted');
                     getFcmToken();
                 }
                 else {
-                    console.log('Notification permission denied');
+                    // console.log('Notification permission denied');
                     getFcmToken();
                 }
 
@@ -54,9 +54,9 @@ const LoginScreen = () => {
         try {
             const token = await messaging().getToken();
             if (token) {
-                console.log('FCM Token:', token);
+                // console.log('FCM Token:', token);
             } else {
-                console.log('Failed to get FCM token');
+                // console.log('Failed to get FCM token');
             }
         } catch (error) {
             console.error('Error getting FCM token:', error);
