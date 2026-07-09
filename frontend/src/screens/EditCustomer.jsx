@@ -75,9 +75,7 @@ const EditCustomer = () => {
 
     const { customer } = route.params;
 
-    const loading = useSelector(
-        state => state.auth.loading
-    );
+    const loading = useSelector(state => state.customer.loading);
 
     const [showImagePicker, setShowImagePicker] =
         useState(false);
