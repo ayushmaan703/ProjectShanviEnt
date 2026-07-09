@@ -6,6 +6,7 @@ const initialState = {
   status: 'loading',
   userData: null,
   requestedUserData: null,
+  userList: null,
 };
 import * as Keychain from 'react-native-keychain';
 import Toast from 'react-native-toast-message';
@@ -35,6 +36,16 @@ export const userLogin = createAsyncThunk('userLogin', async data => {
 export const registerUser = createAsyncThunk('registerUser', async data => {
   try {
     const response = await axiosInstance.post('/user/registerUser', data);
+    return response.data.data;
+  } catch (error) {
+    throw error;
+  }
+});
+
+export const getAllUsers = createAsyncThunk('getAllUsers', async () => {
+  try {
+    const response = await axiosInstance.get('/user/getAllUsers');
+
     return response.data.data;
   } catch (error) {
     throw error;
@@ -149,6 +160,16 @@ const authSlice = createSlice({
       })
       .addCase(initializeAuth.rejected, state => {
         state.status = 'unauthenticated';
+      })
+      .addCase(getAllUsers.pending, state => {
+        state.loading = true;
+      })
+      .addCase(getAllUsers.fulfilled, (state, action) => {
+        state.userList = action.payload;
+        state.loading = false;
+      })
+      .addCase(getAllUsers.rejected, state => {
+        state.loading = false;
       })
       .addCase(registerUser.pending, state => {
         state.loading = true;

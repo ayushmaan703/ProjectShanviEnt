@@ -2,6 +2,7 @@ import asyncHandler from "../utils/asyncHandler.js";
 import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import { Customer } from "../models/customer.model.js";
+import { uploadToCloudinary } from "../utils/cloudinary.js";
 
 const getAllCustomers = asyncHandler(async (req, res) => {
   const customers = await Customer.find();
@@ -20,17 +21,26 @@ const deleteCustomer = asyncHandler(async (req, res) => {
 });
 
 const editCustomer = asyncHandler(async (req, res) => {
-  const { name, contactPerson, contactNo, connectionDetails } = req.body;
-  const { customerId } = req?.body?.params;
+  const { name, contactPerson, contactNo, connectionDetails, customerId } =
+    req.body;
 
   if (!customerId) {
     throw new ApiError(404, "Customer Id is required");
   }
+  const imageLocalPath = req?.files?.image?.[0]?.path;
+  if (imageLocalPath) {
+    var image = await uploadToCloudinary(imageLocalPath);
+    if (!image) {
+      throw new ApiError(400, "Image is required");
+    }
+  }
+
   const customer = await Customer.findById(customerId);
   if (name) customer.name = name;
   if (contactPerson) customer.contactPerson = contactPerson;
   if (contactNo) customer.contactNo = contactNo;
   if (connectionDetails) customer.connectionDetails = connectionDetails;
+  if (imageLocalPath) customer.image = image?.url;
 
   await customer.save();
 

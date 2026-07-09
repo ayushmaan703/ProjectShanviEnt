@@ -15,7 +15,8 @@ import { verifyCustomers } from "../store/slice/Admin.slice";
 import Toast from "react-native-toast-message";
 import { deleteCustomer, togglePaidStatus } from "../store/slice/Customer.slice";
 import { useNavigation } from "@react-navigation/native";
-import { Switch } from "react-native-gesture-handler";
+// import Clipboard from '@react-native-clipboard/clipboard';
+
 
 const CustomerDetails = ({ route }) => {
     const navigation = useNavigation()
@@ -49,7 +50,7 @@ const CustomerDetails = ({ route }) => {
 
             <View style={{ flex: 1 }}>
                 <Text style={styles.label}>{title}</Text>
-                <Text style={styles.value}>
+                <Text style={styles.value} selectable>
                     {value || "Not Available"}
                 </Text>
             </View>
@@ -188,7 +189,7 @@ const CustomerDetails = ({ route }) => {
                 />
             </View>
 
-            {!isPaid && <View style={styles.cardBottom}>
+            {(!isPaid &&currUser?.role === "admin")&& <View style={styles.cardBottom}>
                 <View style={styles.paymentRow}>
                     <View style={styles.statusContainerBottom}>
                         <View style={styles.statusDot} />
@@ -232,7 +233,7 @@ const CustomerDetails = ({ route }) => {
                             Verify
                         </Text>
                     </TouchableOpacity>)}
-                {(currUser?.role === "admin") && (
+                
                     <TouchableOpacity
                         style={styles.editButton}
                         onPress={() => navigation.navigate("EditCustomer", { customer })}
@@ -246,7 +247,7 @@ const CustomerDetails = ({ route }) => {
                         <Text style={styles.buttonText}>
                             Edit
                         </Text>
-                    </TouchableOpacity>)}
+                    </TouchableOpacity>
                 {(currUser?.role === "admin") && (
                     <TouchableOpacity
                         style={styles.delButton}
@@ -397,7 +398,7 @@ const styles = StyleSheet.create({
         color: "#fff",
         fontSize: 17,
         fontWeight: "700",
-        marginLeft: 10,
+        marginLeft: 2,
     },
     cardBottom: {
         backgroundColor: "#fff",

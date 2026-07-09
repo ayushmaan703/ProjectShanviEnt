@@ -156,7 +156,6 @@ const refreshToken = asyncHandler(async (req, res) => {
         },
       );
 
-
       return res.status(200).json({
         success: true,
         data: {
@@ -285,6 +284,13 @@ const createCustomer = asyncHandler(async (req, res) => {
     .json(new ApiResponse(201, customer, "Customer created successfully"));
 });
 
+const getAllUsers = asyncHandler(async (req, res) => {
+  const users = await User.find();
+  return res
+    .status(200)
+    .json(new ApiResponse(200, users, "Users retrieved successfully"));
+});
+
 // const changeCoverImage = asyncHandler(async (req, res) => {
 //     const CoverImageLocalPath = req.file?.path
 //     if (!CoverImageLocalPath) {
@@ -321,4 +327,5 @@ export {
   forgotPassword,
   updateAccountDetails,
   createCustomer,
+  getAllUsers,
 };

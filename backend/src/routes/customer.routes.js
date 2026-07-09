@@ -9,6 +9,7 @@ import {
 
 import verifyToken from "../middlewares/auth.middleware.js";
 import verifyAdmin from "../middlewares/admin.middleware.js";
+import { upload } from "../middlewares/multer.middleware.js";
 
 const router = Router();
 
@@ -18,7 +19,18 @@ router.get("/getCustomerListUnauth", getAllCustomers);
 
 router.get("/getCustomerList", verifyToken, getAllCustomers);
 router.delete("/deleteCustomer", verifyToken, verifyAdmin, deleteCustomer);
-router.patch("/editCustomer", verifyToken, verifyAdmin, editCustomer);
+router.patch(
+  "/editCustomer",
+  verifyToken,
+  verifyAdmin,
+  upload.fields([
+    {
+      name: "image",
+      maxCount: 1,
+    },
+  ]),
+  editCustomer,
+);
 router.patch("/togglePaidStatus", verifyToken, verifyAdmin, togglePaidStatus);
 
 export default router;

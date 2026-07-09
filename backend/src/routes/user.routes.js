@@ -10,6 +10,7 @@ import {
   forgotPassword,
   updateAccountDetails,
   createCustomer,
+  getAllUsers,
 } from "../controllers/user.controller.js";
 
 import verifyToken from "../middlewares/auth.middleware.js";
@@ -25,6 +26,7 @@ router.post("/getUInfo", getUserDetails);
 
 // Authenticated Routes
 router.post("/logout", verifyToken, logoutUser);
+router.get("/getAllUsers", verifyToken, getAllUsers);
 router.get("/getCurrUInfo", verifyToken, getCurrUserInfo);
 router.post(
   "/createCustomer",

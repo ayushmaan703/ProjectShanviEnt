@@ -31,29 +31,24 @@ export const deleteCustomer = createAsyncThunk(
   },
 );
 
-export const editCustomer = createAsyncThunk(
-  'editCustomer',
-  async ({data, customerId}) => {
-    try {
-      const response = await axiosInstance.delete(
-        '/customer/editCustomer',
-        data,
-        {
-          params: {customerId},
-        },
-      );
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
-);
+export const editCustomer = createAsyncThunk('editCustomer', async data => {
+  try {
+    const response = await axiosInstance.patch('/customer/editCustomer', data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+});
 
 export const togglePaidStatus = createAsyncThunk(
   'togglePaidStatus',
   async customerId => {
     console.log(customerId);
-    
+
     try {
       const response = await axiosInstance.patch('/customer/togglePaidStatus', {
         params: {customerId},
@@ -61,10 +56,10 @@ export const togglePaidStatus = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.log(error);
-      
+
       Toast.show({
         type: 'customNotificationError',
-        text1: error?.data||'Error Occured',
+        text1: error?.data || 'Error Occured',
         visibilityTime: 1000,
       });
       throw error;

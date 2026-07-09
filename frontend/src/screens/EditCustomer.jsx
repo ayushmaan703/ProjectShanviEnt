@@ -26,7 +26,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import Modal from "react-native-modal";
 import CustomNavBar from "../helper/CustomNavBar";
 
-import { updateCustomer } from "../store/slice/Auth.slice";
+import { editCustomer } from "../store/slice/Customer.slice";
 
 const Input = ({
     label,
@@ -122,8 +122,8 @@ const EditCustomer = () => {
         };
 
 
-    
-        const openCamera = async () => {
+
+    const openCamera = async () => {
         const hasPermission =
             await requestCameraPermission();
 
@@ -171,76 +171,13 @@ const EditCustomer = () => {
     };
 
     const handleSubmit = async () => {
-        if (!form.name.trim()) {
-            Toast.show({
-                type: "customNotificationError",
-                text1:
-                    "Customer name is required.",
-            });
-            return;
-        }
-
-        if (!form.contactPerson.trim()) {
-            Toast.show({
-                type: "customNotificationError",
-                text1:
-                    "Contact person is required.",
-            });
-            return;
-        }
-
-        if (!form.contactNo.trim()) {
-            Toast.show({
-                type: "customNotificationError",
-                text1:
-                    "Contact number is required.",
-            });
-            return;
-        }
-
-        if (form.contactNo.length !== 10) {
-            Toast.show({
-                type: "customNotificationError",
-                text1:
-                    "Contact number must be 10 digits.",
-            });
-            return;
-        }
-
-        if (
-            !form.connectionDetails.trim()
-        ) {
-            Toast.show({
-                type: "customNotificationError",
-                text1:
-                    "Connection details are required.",
-            });
-            return;
-        }
-
         const data = new FormData();
 
-        data.append(
-            "customerId",
-            customer._id
-        );
-
         data.append("name", form.name);
-
-        data.append(
-            "contactPerson",
-            form.contactPerson
-        );
-
-        data.append(
-            "contactNo",
-            form.contactNo
-        );
-
-        data.append(
-            "connectionDetails",
-            form.connectionDetails
-        );
+        data.append("customerId", customer._id);
+        data.append("contactPerson", form.contactPerson);
+        data.append("contactNo", form.contactNo);
+        data.append("connectionDetails", form.connectionDetails);
 
         // Upload image only if user selected a new one
         if (form.image?.type) {
@@ -253,14 +190,9 @@ const EditCustomer = () => {
             });
         }
 
-        const res = await dispatch(
-            updateCustomer(data)
-        );
+        const res = await dispatch(editCustomer(data));
 
-        if (
-            res.type ===
-            "updateCustomer/fulfilled"
-        ) {
+        if (res.type === "editCustomer/fulfilled") {
             Toast.show({
                 type: "customNotificationSuccess",
                 text1:
