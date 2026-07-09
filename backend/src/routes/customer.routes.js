@@ -22,7 +22,6 @@ router.delete("/deleteCustomer", verifyToken, verifyAdmin, deleteCustomer);
 router.patch(
   "/editCustomer",
   verifyToken,
-  verifyAdmin,
   upload.fields([
     {
       name: "image",
