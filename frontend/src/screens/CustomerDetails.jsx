@@ -13,8 +13,9 @@ import { getUInfo } from "../store/slice/Auth.slice";
 import { useDispatch, useSelector } from "react-redux";
 import { verifyCustomers } from "../store/slice/Admin.slice";
 import Toast from "react-native-toast-message";
-import { deleteCustomer } from "../store/slice/Customer.slice";
+import { deleteCustomer, togglePaidStatus } from "../store/slice/Customer.slice";
 import { useNavigation } from "@react-navigation/native";
+import { Switch } from "react-native-gesture-handler";
 
 const CustomerDetails = ({ route }) => {
     const navigation = useNavigation()
@@ -22,6 +23,7 @@ const CustomerDetails = ({ route }) => {
     const dispatch = useDispatch();
     const [createdByUser, setCreatedByUser] = useState(null);
     const [verified, setVerified] = useState(customer.verified);
+    const [isPaid, setIsPaid] = useState(customer.isPaid);
     const currUser = useSelector((state) => state.auth.userData);
 
     useEffect(() => {
@@ -53,6 +55,7 @@ const CustomerDetails = ({ route }) => {
             </View>
         </View>
     );
+
     const handleVerifyCustomer = async () => {
         const res = await dispatch(verifyCustomers({ customerId: customer?._id }));
         if (res.type === "verifyCustomers/fulfilled") {
@@ -64,6 +67,7 @@ const CustomerDetails = ({ route }) => {
             setVerified(true);
         }
     }
+
     const handledeleteCustomer = async () => {
         const res = await dispatch(deleteCustomer({ customerId: customer?._id }));
 
@@ -76,6 +80,20 @@ const CustomerDetails = ({ route }) => {
             navigation.goBack()
         }
     }
+
+    const handleMarkAsPaid = async (id) => {
+        const res = await dispatch(togglePaidStatus(id));
+
+        if (res.type === "togglePaidStatus/fulfilled") {
+            Toast.show({
+                type: "customNotificationSuccess",
+                text1: "Commission paid.",
+                visibilityTime: 1000,
+            })
+            setIsPaid(true)
+        }
+    };
+
     return (
         <ScrollView style={styles.container}>
             <CustomNavBar title={"Customer Details"} />
@@ -135,13 +153,13 @@ const CustomerDetails = ({ route }) => {
             <View style={styles.card}>
 
                 <DetailRow
-                    icon="building"
+                    icon="user"
                     title="Customer Name"
                     value={customer?.name}
                 />
 
                 <DetailRow
-                    icon="user"
+                    icon="user-tie"
                     title="Contact Person"
                     value={customer?.contactPerson}
                 />
@@ -153,7 +171,7 @@ const CustomerDetails = ({ route }) => {
                 />
 
                 <DetailRow
-                    icon="wifi"
+                    icon="file-lines"
                     title="Connection Details"
                     value={customer?.connectionDetails}
                 />
@@ -163,14 +181,61 @@ const CustomerDetails = ({ route }) => {
                     title="Created By"
                     value={createdByUser}
                 />
+                <DetailRow
+                    icon="money-bill"
+                    title="Commission Status"
+                    value={isPaid ? "Paid" : "Un-Paid"}
+                />
             </View>
 
-            {/* Edit Button */}
+            {!isPaid && <View style={styles.cardBottom}>
+                <View style={styles.paymentRow}>
+                    <View style={styles.statusContainerBottom}>
+                        <View style={styles.statusDot} />
+                        <View>
+                            <Text style={styles.statusTitle}>Payment Pending</Text>
+                            <Text style={styles.statusSubtitle}>
+                                Commission not paid.
+                            </Text>
+                        </View>
+                    </View>
+
+                    <TouchableOpacity
+                        style={styles.payButton}
+                        onPress={() => handleMarkAsPaid(customer._id)}
+                        activeOpacity={0.8}
+                    >
+                        <FontAwesome6
+                            name="check"
+                            size={16}
+                            color="#fff"
+                            solid
+                        />
+                        <Text style={styles.payButtonText}>Pay</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>}
+
             <View style={styles.bottomBtn}>
                 {(currUser?.role === "admin" && verified !== true) && (
                     <TouchableOpacity
                         style={styles.button}
                         onPress={handleVerifyCustomer}
+                    >
+                        <FontAwesome6
+                            name="check"
+                            size={18}
+                            color="#fff"
+                        />
+
+                        <Text style={styles.buttonText}>
+                            Verify
+                        </Text>
+                    </TouchableOpacity>)}
+                {(currUser?.role === "admin") && (
+                    <TouchableOpacity
+                        style={styles.editButton}
+                        onPress={() => navigation.navigate("EditCustomer", { customer })}
                     >
                         <FontAwesome6
                             name="pen"
@@ -179,7 +244,7 @@ const CustomerDetails = ({ route }) => {
                         />
 
                         <Text style={styles.buttonText}>
-                            Verify Customer
+                            Edit
                         </Text>
                     </TouchableOpacity>)}
                 {(currUser?.role === "admin") && (
@@ -194,10 +259,11 @@ const CustomerDetails = ({ route }) => {
                         />
 
                         <Text style={styles.buttonText}>
-                            Delete Customer
+                            Delete
                         </Text>
                     </TouchableOpacity>)}
             </View>
+
             <View style={{ height: 40 }} />
 
         </ScrollView>
@@ -297,11 +363,20 @@ const styles = StyleSheet.create({
         gap: 12,
         marginHorizontal: 20
     },
-
     button: {
         flex: 1,
         height: 50,
         backgroundColor: "#22C55E",
+        borderRadius: 12,
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "row",
+        gap: 8,
+    },
+    editButton: {
+        flex: 1,
+        height: 50,
+        backgroundColor: "rgba(74, 144, 226, 0.85)",
         borderRadius: 12,
         justifyContent: "center",
         alignItems: "center",
@@ -323,5 +398,64 @@ const styles = StyleSheet.create({
         fontSize: 17,
         fontWeight: "700",
         marginLeft: 10,
+    },
+    cardBottom: {
+        backgroundColor: "#fff",
+        borderRadius: 16,
+        padding: 18,
+        marginVertical: 10,
+        elevation: 3,
+        shadowColor: "#000",
+        shadowOpacity: 0.08,
+        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 3 },
+        marginHorizontal: 18
+    },
+    paymentRow: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+
+    statusContainerBottom: {
+        flexDirection: "row",
+        alignItems: "center",
+        flex: 1,
+    },
+
+    statusDot: {
+        width: 12,
+        height: 12,
+        borderRadius: 6,
+        backgroundColor: "#EF4444",
+        marginRight: 12,
+    },
+
+    statusTitle: {
+        fontSize: 16,
+        fontWeight: "700",
+        color: "#111827",
+    },
+
+    statusSubtitle: {
+        fontSize: 13,
+        color: "#6B7280",
+        marginTop: 2,
+    },
+
+    payButton: {
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: "#22C55E",
+        paddingHorizontal: 14,
+        paddingVertical: 10,
+        borderRadius: 10,
+    },
+
+    payButtonText: {
+        color: "#fff",
+        fontWeight: "700",
+        fontSize: 14,
+        marginLeft: 8,
     },
 });

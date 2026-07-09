@@ -28,22 +28,26 @@ const UserHomeDashboard = () => {
   const [refreshing, setRefreshing] = useState(false);
 
   const filteredCustomers = useMemo(() => {
+    const searchText = search.toLowerCase();
+
     return customerList.filter((customer) => {
+      const name = customer?.name?.toLowerCase?.() || "";
+      const contactNo = String(customer?.contactNo || "");
+
       const matchesSearch =
-        customer.name.toLowerCase().includes(search.toLowerCase()) ||
-        customer.phone.includes(search);
+        name.includes(searchText) ||
+        contactNo.includes(search);
 
       const matchesFilter =
         selectedFilter === "all"
           ? true
           : selectedFilter === "approved"
-            ? customer.verified
-            : !customer.verified;
+            ? customer?.verified
+            : !customer?.verified;
 
       return matchesSearch && matchesFilter;
     });
   }, [customerList, search, selectedFilter]);
-
   useEffect(() => {
     dispatch(getAllCustomers());
     dispatch(getCurrUInfo());
@@ -55,11 +59,9 @@ const UserHomeDashboard = () => {
       onPress={() => navigation.navigate("CustomerDetails", { customer: item })}
     >
       <View style={{ flex: 1 }}>
-        <Text style={styles.customerName}>{item.name}</Text>
-
-        <Text style={styles.customerInfo}>📞 {item.contactNo}</Text>
-
-        <Text style={styles.customerInfo}>📍 {item.contactPerson}</Text>
+        <Text style={styles.customerName}>{item?.name || "-"}</Text>
+        <Text style={styles.customerInfo}>📞 {item?.contactNo || "-"}</Text>
+        <Text style={styles.customerInfo}>📍 {item?.contactPerson || "-"}</Text>
       </View>
 
       <View

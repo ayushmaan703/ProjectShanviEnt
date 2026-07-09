@@ -19,4 +19,41 @@ const deleteCustomer = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, null, "Customer deleted successfully"));
 });
 
-export { getAllCustomers, deleteCustomer };
+const editCustomer = asyncHandler(async (req, res) => {
+  const { name, contactPerson, contactNo, connectionDetails } = req.body;
+  const { customerId } = req?.body?.params;
+
+  if (!customerId) {
+    throw new ApiError(404, "Customer Id is required");
+  }
+  const customer = await Customer.findById(customerId);
+  if (name) customer.name = name;
+  if (contactPerson) customer.contactPerson = contactPerson;
+  if (contactNo) customer.contactNo = contactNo;
+  if (connectionDetails) customer.connectionDetails = connectionDetails;
+
+  await customer.save();
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, customer, "Customer Updated Successfully"));
+});
+
+const togglePaidStatus = asyncHandler(async (req, res) => {
+  const { customerId } = req?.body?.params;
+
+  if (!customerId) {
+    throw new ApiError(404, "Customer Id is required");
+  }
+  const customer = await Customer.findById(customerId);
+
+  customer.isPaid = true;
+
+  await customer.save();
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, customer, "Paid Status Updated Successfully"));
+});
+
+export { getAllCustomers, deleteCustomer, editCustomer, togglePaidStatus };

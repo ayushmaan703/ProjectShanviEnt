@@ -1,6 +1,11 @@
 import { Router } from "express";
 
-import { deleteCustomer, getAllCustomers } from "../controllers/customer.controller.js";
+import {
+  deleteCustomer,
+  editCustomer,
+  getAllCustomers,
+  togglePaidStatus,
+} from "../controllers/customer.controller.js";
 
 import verifyToken from "../middlewares/auth.middleware.js";
 import verifyAdmin from "../middlewares/admin.middleware.js";
@@ -13,5 +18,7 @@ router.get("/getCustomerListUnauth", getAllCustomers);
 
 router.get("/getCustomerList", verifyToken, getAllCustomers);
 router.delete("/deleteCustomer", verifyToken, verifyAdmin, deleteCustomer);
+router.patch("/editCustomer", verifyToken, verifyAdmin, editCustomer);
+router.patch("/togglePaidStatus", verifyToken, verifyAdmin, togglePaidStatus);
 
 export default router;

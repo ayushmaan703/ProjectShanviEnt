@@ -1,5 +1,6 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import axiosInstance from '../../helper/AxiosInstance.js';
+import Toast from 'react-native-toast-message';
 
 const initialState = {
   loading: false,
@@ -30,6 +31,47 @@ export const deleteCustomer = createAsyncThunk(
   },
 );
 
+export const editCustomer = createAsyncThunk(
+  'editCustomer',
+  async ({data, customerId}) => {
+    try {
+      const response = await axiosInstance.delete(
+        '/customer/editCustomer',
+        data,
+        {
+          params: {customerId},
+        },
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+);
+
+export const togglePaidStatus = createAsyncThunk(
+  'togglePaidStatus',
+  async customerId => {
+    console.log(customerId);
+    
+    try {
+      const response = await axiosInstance.patch('/customer/togglePaidStatus', {
+        params: {customerId},
+      });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      
+      Toast.show({
+        type: 'customNotificationError',
+        text1: error?.data||'Error Occured',
+        visibilityTime: 1000,
+      });
+      throw error;
+    }
+  },
+);
+
 const customerSlice = createSlice({
   name: 'customer',
   initialState,
@@ -41,12 +83,10 @@ const customerSlice = createSlice({
       })
       .addCase(getAllCustomers.fulfilled, (state, action) => {
         state.loading = false;
-        state.status = true;
         state.customerList = action.payload;
       })
       .addCase(getAllCustomers.rejected, (state, action) => {
         state.loading = false;
-        state.status = false;
         state.customerList = null;
       })
       .addCase(deleteCustomer.pending, state => {
@@ -54,14 +94,30 @@ const customerSlice = createSlice({
       })
       .addCase(deleteCustomer.fulfilled, (state, action) => {
         state.loading = false;
-        state.status = true;
         state.customerList = state.customerList.filter(
           customer => customer._id !== action.meta.arg,
         );
       })
       .addCase(deleteCustomer.rejected, (state, action) => {
         state.loading = false;
-        state.status = false;
+      })
+      .addCase(editCustomer.pending, state => {
+        state.loading = true;
+      })
+      .addCase(editCustomer.fulfilled, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(editCustomer.rejected, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(togglePaidStatus.pending, state => {
+        state.loading = true;
+      })
+      .addCase(togglePaidStatus.fulfilled, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(togglePaidStatus.rejected, (state, action) => {
+        state.loading = false;
       });
   },
 });

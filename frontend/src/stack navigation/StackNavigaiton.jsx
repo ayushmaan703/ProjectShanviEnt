@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import CreateCustomer from '../screens/CreateCustomer.jsx';
 import CustomerDetails from '../screens/CustomerDetails.jsx';
 import SplashScreen from '../helper/SplashScreen.jsx';
+import EditCustomer from '../screens/EditCustomer.jsx';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,7 +17,7 @@ const StackNavigator = () => {
 
     // const [isSplashVisible, setIsSplashVisible] = useState(true);
     const auth = useSelector((state) => state.auth?.status)
-    
+
     // useEffect(() => {
     //     const timer = setTimeout(() => {
     //         setIsSplashVisible(false);
@@ -54,6 +55,7 @@ const StackNavigator = () => {
                     <Stack.Screen name="Home" component={HomeScreen} />
                     <Stack.Screen name="UserHomeDashboard" component={UserHomeDashboard} />
                     <Stack.Screen name="CreateCustomer" component={CreateCustomer} />
+                    <Stack.Screen name="EditCustomer" component={EditCustomer} />
                     <Stack.Screen name="CustomerDetails" component={CustomerDetails} />
                 </>
             ) : (
