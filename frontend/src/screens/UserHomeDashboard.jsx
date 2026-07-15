@@ -198,6 +198,15 @@ const UserHomeDashboard = () => {
         )}
       </View>
 
+      {/* TOTAL COUNT */}
+      <View style={styles.totalCountRow}>
+        <FontAwesome6 name="users" size={12} color="#4A90E2" />
+        <Text style={styles.totalCountText}>
+          Showing {filteredCustomers.length}{" "}
+          {filteredCustomers.length === 1 ? "Customer" : "Customers"}
+        </Text>
+      </View>
+
       {/* Active filter chips summary (optional quick glance) */}
       {isAdmin && activeFilterCount > 0 && (
         <View style={styles.activeChipsRow}>
@@ -708,5 +717,18 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "700",
     fontSize: 14,
+  },
+  totalCountRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginHorizontal: 15,
+    marginTop: 12,
+    gap: 6,
+  },
+
+  totalCountText: {
+    fontSize: 13,
+    color: "#555",
+    fontWeight: "600",
   },
 });

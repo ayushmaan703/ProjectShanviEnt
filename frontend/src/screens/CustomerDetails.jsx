@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
     View,
     Text,
@@ -17,6 +17,20 @@ import { deleteCustomer, togglePaidStatus } from "../store/slice/Customer.slice"
 import { useNavigation } from "@react-navigation/native";
 // import Clipboard from '@react-native-clipboard/clipboard';
 
+const DetailRow = ({ icon, title, value }) => (
+    <View style={styles.detailCard}>
+        <View style={styles.iconContainer}>
+            <FontAwesome6 name={icon} size={18} color="#2563EB" />
+        </View>
+
+        <View style={{ flex: 1 }}>
+            <Text style={styles.label}>{title}</Text>
+            <Text style={styles.value} selectable>
+                {value || "Not Available"}
+            </Text>
+        </View>
+    </View>
+);
 
 const CustomerDetails = ({ route }) => {
     const navigation = useNavigation()
@@ -40,22 +54,7 @@ const CustomerDetails = ({ route }) => {
             }
         };
         fetchUserInfo();
-    }, [customer]);
-
-    const DetailRow = ({ icon, title, value }) => (
-        <View style={styles.detailCard}>
-            <View style={styles.iconContainer}>
-                <FontAwesome6 name={icon} size={18} color="#2563EB" />
-            </View>
-
-            <View style={{ flex: 1 }}>
-                <Text style={styles.label}>{title}</Text>
-                <Text style={styles.value} selectable>
-                    {value || "Not Available"}
-                </Text>
-            </View>
-        </View>
-    );
+    }, [customer?.createdBy]);
 
     const handleVerifyCustomer = async () => {
         const res = await dispatch(verifyCustomers({ customerId: customer?._id }));
@@ -95,19 +94,44 @@ const CustomerDetails = ({ route }) => {
         }
     };
 
+    const getOptimizedImage = (url, size = 340) => {
+        if (!url) return null;
+        return url.replace("/upload/", `/upload/w_${size},h_${size},c_fill,f_auto,q_auto/`);
+    };
+    const imageSource = useMemo(
+        () => ({
+            uri: getOptimizedImage(customer?.image) || "https://via.placeholder.com/250x250.png?text=Customer",
+        }),
+        [customer?.image]
+    );
+
     return (
         <ScrollView style={styles.container}>
             <CustomNavBar title={"Customer Details"} />
             {/* Image */}
 
             <View style={styles.imageContainer}>
-                <Image
+                {/* <Image
                     source={{
                         uri:
                             customer?.image ||
                             "https://via.placeholder.com/250x250.png?text=Customer",
                     }}
                     style={styles.image}
+                /> */}
+                {/* <FastImage
+                    style={styles.image}
+                    source={{
+                        uri: customer?.image || "https://via.placeholder.com/250x250.png?text=Customer",
+                        priority: FastImage.priority.normal,
+                    }}
+                    resizeMode={FastImage.resizeMode.cover}
+                /> */}
+                <Image
+                    source={imageSource}
+                    style={styles.image}
+                    resizeMode="cover"
+                    fadeDuration={0}
                 />
             </View>
 
@@ -189,7 +213,7 @@ const CustomerDetails = ({ route }) => {
                 />
             </View>
 
-            {(!isPaid &&currUser?.role === "admin")&& <View style={styles.cardBottom}>
+            {(!isPaid && currUser?.role === "admin") && <View style={styles.cardBottom}>
                 <View style={styles.paymentRow}>
                     <View style={styles.statusContainerBottom}>
                         <View style={styles.statusDot} />
@@ -233,21 +257,21 @@ const CustomerDetails = ({ route }) => {
                             Verify
                         </Text>
                     </TouchableOpacity>)}
-                
-                    <TouchableOpacity
-                        style={styles.editButton}
-                        onPress={() => navigation.navigate("EditCustomer", { customer })}
-                    >
-                        <FontAwesome6
-                            name="pen"
-                            size={18}
-                            color="#fff"
-                        />
 
-                        <Text style={styles.buttonText}>
-                            Edit
-                        </Text>
-                    </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.editButton}
+                    onPress={() => navigation.navigate("EditCustomer", { customer })}
+                >
+                    <FontAwesome6
+                        name="pen"
+                        size={18}
+                        color="#fff"
+                    />
+
+                    <Text style={styles.buttonText}>
+                        Edit
+                    </Text>
+                </TouchableOpacity>
                 {(currUser?.role === "admin") && (
                     <TouchableOpacity
                         style={styles.delButton}

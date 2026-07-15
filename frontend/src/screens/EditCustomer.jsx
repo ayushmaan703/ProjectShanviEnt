@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
     View,
     Text,
@@ -168,6 +168,17 @@ const EditCustomer = () => {
         setShowImagePicker(true);
     };
 
+    const getOptimizedImage = (url, size = 340) => {
+        if (!url) return null;
+        return url.replace("/upload/", `/upload/w_${size},h_${size},c_fill,f_auto,q_auto/`);
+    };
+    const imageSource = useMemo(
+        () => ({
+            uri: getOptimizedImage(form?.image?.uri) || "https://via.placeholder.com/250x250.png?text=Customer",
+        }),
+        [customer?.image]
+    );
+
     const handleSubmit = async () => {
         const data = new FormData();
 
@@ -219,11 +230,16 @@ const EditCustomer = () => {
                 >
                     {form.image ? (
                         <>
-                            <Image
+                            {/* <Image
                                 source={{ uri: form.image.uri }}
                                 style={styles.image}
+                            /> */}
+                            <Image
+                                source={imageSource}
+                                style={styles.image}
+                                resizeMode="cover"
+                                fadeDuration={0}
                             />
-
                             <View style={styles.editBadge}>
                                 <FontAwesome6
                                     name="pen"
